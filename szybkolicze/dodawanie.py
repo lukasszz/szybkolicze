@@ -17,11 +17,16 @@ def dodawanie(x, y):
                 a, b = cyfry.split(' ')
             except ValueError:
                 print("Nie rozumię. Podaj dwie cyfry rodzielone spacją")
-            # if i > 1:
-            #     print("Nie. Podpowiedź: Ile % brakuje do pełnej 10?" % str(x_1))
+                continue
+
             if a1 == int(a) and b1 == int(b):
                 print("Dobrze!")
                 break
+            else:
+                if i >= 1:
+                    print("Niestety nie. Podpowiedź: Ile %s brakuje do pełnej 10?" % str(x_1))
+                else:
+                    print("Niestety nie. Spróbuj jeszcze raz!")
 
 
 if '__main__' == __name__:
