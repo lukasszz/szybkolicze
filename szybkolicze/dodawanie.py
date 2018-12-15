@@ -6,8 +6,17 @@ def dodawanie(x, y):
 
     x_1 = x % 10  # jedności pierwszej liczby
 
-    print("Ile to będzie %s + %s = ?" % (x, y))
-    if x_1 + y > 10:
+    if x_1 + y <= 10:
+        for i in range(3):
+            wynik = input("Ile to będzie %s + %s = " % (x, y))
+            if int(wynik) == x + y:
+                print("    Dobrze!")
+                return True
+            else:
+                print("    Niestety nie. Spróbuj jeszcze raz!")
+        print("    Niestety nie udało się :(. %d + %d = %d" % (x, y, x + y))
+    else:
+        print("Ile to będzie %s + %s = ?" % (x, y))
         a1 = 10 - x_1
         b1 = y - a1
 

@@ -50,3 +50,11 @@ class DodawanieTestCase(unittest.TestCase):
             with patch('sys.stdout', new=io.StringIO()) as output:
                 dodawanie(84, 7)
                 self.assertEqual(expected_output, output.getvalue())
+
+    def test_bezdop_dobrze(self):
+        expected_output = '    Dobrze!\n'
+        user_input = ['90']
+        with patch('builtins.input', side_effect=user_input):
+            with patch('sys.stdout', new=io.StringIO()) as output:
+                dodawanie(84, 6)
+                self.assertEqual(expected_output, output.getvalue())
