@@ -58,3 +58,25 @@ class DodawanieTestCase(unittest.TestCase):
             with patch('sys.stdout', new=io.StringIO()) as output:
                 dodawanie(84, 6)
                 self.assertEqual(expected_output, output.getvalue())
+
+    def test_bezdop_1_zle(self):
+        expected_output = '    Niestety nie. Spróbuj jeszcze raz!\n'\
+                          '    Dobrze!\n'
+
+        user_input = ['0', '90']
+        with patch('builtins.input', side_effect=user_input):
+            with patch('sys.stdout', new=io.StringIO()) as output:
+                dodawanie(84, 6)
+                self.assertEqual(expected_output, output.getvalue())
+
+    def test_bezdop_nie_udalo_sie(self):
+        expected_output = '    Niestety nie. Spróbuj jeszcze raz!\n' \
+                          '    Niestety nie. Spróbuj jeszcze raz!\n' \
+                          '    Niestety nie. Spróbuj jeszcze raz!\n' \
+                          "    Niestety nie udało się :(. 84 + 6 = 90\n"
+
+        user_input = ['0', '0', '0', '0']
+        with patch('builtins.input', side_effect=user_input):
+            with patch('sys.stdout', new=io.StringIO()) as output:
+                dodawanie(84, 6)
+                self.assertEqual(expected_output, output.getvalue())
