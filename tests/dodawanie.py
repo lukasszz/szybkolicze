@@ -19,8 +19,9 @@ class DodawanieTestCase(unittest.TestCase):
                 self.assertEqual(expected_output, output.getvalue())
 
     def test_dobrze(self):
-        user_input = ['6+1']
+        user_input = ['6+1', '91']
         expected_output = 'Ile to będzie 84 + 7 = ?\n' \
+                          '    Dobrze!\n' \
                           '    Dobrze!\n'
 
         with patch('builtins.input', side_effect=user_input):
@@ -29,9 +30,10 @@ class DodawanieTestCase(unittest.TestCase):
                 self.assertEqual(expected_output, output.getvalue())
 
     def test_1_dobrze(self):
-        user_input = ['1+1', '6+1']
+        user_input = ['1+1', '6+1', '91']
         expected_output = 'Ile to będzie 84 + 7 = ?\n' \
-                          '    Niestety nie. Spróbuj jeszcze raz!\n'\
+                          '    Niestety nie. Spróbuj jeszcze raz!\n' \
+                          '    Dobrze!\n' \
                           '    Dobrze!\n'
 
         with patch('builtins.input', side_effect=user_input):
@@ -40,10 +42,11 @@ class DodawanieTestCase(unittest.TestCase):
                 self.assertEqual(expected_output, output.getvalue())
 
     def test_2_dobrze(self):
-        user_input = ['1+1', '1+1', '6+1']
+        user_input = ['1+1', '1+1', '6+1', '91']
         expected_output = 'Ile to będzie 84 + 7 = ?\n' \
-                          '    Niestety nie. Spróbuj jeszcze raz!\n'\
-                          '    Niestety nie. Podpowiedź: Ile 4 brakuje do pełnej 10?\n'\
+                          '    Niestety nie. Spróbuj jeszcze raz!\n' \
+                          '    Niestety nie. Podpowiedź: Ile 4 brakuje do pełnej 10?\n' \
+                          '    Dobrze!\n' \
                           '    Dobrze!\n'
 
         with patch('builtins.input', side_effect=user_input):
@@ -60,7 +63,7 @@ class DodawanieTestCase(unittest.TestCase):
                 self.assertEqual(expected_output, output.getvalue())
 
     def test_bezdop_1_zle(self):
-        expected_output = '    Niestety nie. Spróbuj jeszcze raz!\n'\
+        expected_output = '    Niestety nie. Spróbuj jeszcze raz!\n' \
                           '    Dobrze!\n'
 
         user_input = ['0', '90']

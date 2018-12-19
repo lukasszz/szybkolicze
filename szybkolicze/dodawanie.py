@@ -31,6 +31,15 @@ def dodawanie(x, y):
 
             if a1 == int(a) and b1 == int(b):
                 print("    Dobrze!")
+                for _ in range(3):
+                    wynik = input("    To ile to będzie %d + %d = %d + %d + %d = " % (x, y, x, a1, b1))
+                    if int(wynik) == x + y:
+                        print("    Dobrze!")
+                        return True
+                    else:
+                        print("    Niestety nie. Spróbuj jeszcze raz!")
+                print("    Niestety nie udało się :(. %d + %d = %d" % (x, y, x + y))
+
                 break
             else:
                 if i >= 1:
