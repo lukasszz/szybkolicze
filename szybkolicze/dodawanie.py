@@ -1,4 +1,5 @@
 import random
+from os import system
 
 
 def dodawanie(x, y):
@@ -22,7 +23,7 @@ def dodawanie(x, y):
 
         for i in range(3):
             cyfry = input(
-                "    Najpierw napisz na jakie cyfry rozdzielisz %s? (połącz je znakiem +): " % y)
+                "        Najpierw napisz na jakie cyfry rozdzielisz %s? (połącz je znakiem +): " % y)
             try:
                 a, b = cyfry.split('+')
             except ValueError:
@@ -32,7 +33,8 @@ def dodawanie(x, y):
             if a1 == int(a) and b1 == int(b):
                 print("    Dobrze!")
                 for _ in range(3):
-                    wynik = input("    To ile to będzie %d + %d = %d + %d + %d = " % (x, y, x, a1, b1))
+                    wynik = input(
+                        "    To ile to będzie %d + %d = %d + %d + %d = " % (x, y, x, a1, b1))
                     if int(wynik) == x + y:
                         print("    Dobrze!")
                         return True
@@ -49,6 +51,16 @@ def dodawanie(x, y):
 
 
 if '__main__' == __name__:
-    X = random.randint(10, 99)
-    Y = random.randint(0, 9)
-    dodawanie(X, Y)
+    system('clear')
+
+    pkt = 0
+    for i in range(10):
+        system('clear')
+        print('[Punkty: %d / %d]' % (pkt, i))
+        X = random.randint(10, 99)
+        Y = random.randint(0, 9)
+
+        if dodawanie(X, Y):
+            pkt += 1
+        input()
+
